@@ -1,46 +1,47 @@
 //Question 1.
 
-let setZeroes = function (matrix) {
-  let row = matrix.length,
-    col = matrix[0].length;
+function convertZ(twoD) {
+  let row = twoD.length;
+  let column = twoD[0].length;
 
-  for (let r = 0; r < row; r++) {
-    for (let c = 0; c < col; c++) {
-      if (matrix[r][c] === 0) {
-        setMatrix(matrix, r, c);
+  for (let x = 0; x < row; x++) {
+    for (let y = 0; y < column; y++) {
+      if (twoD[x][y] === 0) {
+        setMatrix(twoD, x, y);
       }
     }
   }
 
-  for (let r = 0; r < row; r++) {
-    for (let c = 0; c < col; c++) {
-      if (matrix[r][c] === true) matrix[r][c] = 0;
+  for (let x = 0; x < row; x++) {
+    for (let y = 0; y < column; y++) {
+      if (twoD[x][y] === true) twoD[x][y] = 0;
     }
   }
-  return matrix;
+  return twoD;
+}
+
+const setMatrix = (arr, r, c) => {
+  for (let i = 0; i < arr[0].length; i++) {
+    if (arr[r][i] !== 0) arr[r][i] = true;
+  }
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i][c] !== 0) arr[i][c] = true;
+  }
+  arr[r][c] = 0;
 };
 
-const setMatrix = (matrix, r, c) => {
-  for (let i = 0; i < matrix[0].length; i++) {
-    if (matrix[r][i] !== 0) matrix[r][i] = true;
-  }
-  for (let i = 0; i < matrix.length; i++) {
-    if (matrix[i][c] !== 0) matrix[i][c] = true;
-  }
-  matrix[r][c] = 0;
-};
-
-setZeroes([
+convertZ([
   [1, 1, 1],
   [1, 0, 1],
   [1, 1, 1],
 ]);
 
-setZeroes([
+convertZ([
   [1, 2, 3, 4],
   [5, 6, 0, 8],
   [9, 10, 11, 12],
 ]);
+
 
 //Question 3.
 
